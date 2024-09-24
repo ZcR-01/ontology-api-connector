@@ -3,7 +3,9 @@
   "plugins": ["prettier"],
   "env": {
     "node": true,
-    "es6": true,
     "jest": true
-  }
+  },
+  "languageOptions": {
+    "ecmaVersion": 2022
+  },
 }
