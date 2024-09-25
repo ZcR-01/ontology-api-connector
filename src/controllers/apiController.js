@@ -82,9 +82,8 @@ function processBioPortalData(data) {
     const prefix = parts[parts.length - 2];
     const suffix = uriValue.substring(uriValue.lastIndexOf(delimiter) + 1);
 
-    console.log(uriValue);
     return {
-      uri: uriValue,
+      uri: formatedUri,
       prefixedName: prefix + ':' + suffix,
       label: item.prefLabel,
     };
