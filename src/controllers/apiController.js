@@ -13,7 +13,6 @@ function processLOVData(data) {
       .join(' ');
 
     const uriValue = Object.values(item.uri)[0];
-
     const delimiter = uriValue.includes('#') ? '#' : '/';
 
     const formatedUri = uriValue.substring(
@@ -32,9 +31,7 @@ function processLOVData(data) {
 function processZazukoData(data) {
   return data.map((item) => {
     const uriValue = item.iri.value;
-
     const delimiter = uriValue.includes('#') ? '#' : '/';
-
     const formatedUri = uriValue.substring(
       0,
       uriValue.lastIndexOf(delimiter) + 1,
@@ -50,9 +47,7 @@ function processZazukoData(data) {
 function processAgroportalData(data) {
   return data.map((item) => {
     const uriValue = item.name;
-
     const delimiter = uriValue.includes('#') ? '#' : '/';
-
     const formatedUri = uriValue.substring(
       0,
       uriValue.lastIndexOf(delimiter) + 1,

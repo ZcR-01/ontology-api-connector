@@ -3,12 +3,15 @@ const createError = require('http-errors');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const helmet = require('helmet');
+const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 
 const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
+
+app.use(cors());
 
 app.use(helmet()); // https://expressjs.com/en/advanced/best-practice-security.html#use-helmet
 app.use(logger('dev'));
