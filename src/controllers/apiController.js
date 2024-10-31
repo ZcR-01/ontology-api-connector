@@ -89,23 +89,30 @@ async function fetchExternalAPI(req, res) {
   const { term } = req.params;
 
   try {
-    const lovURL = `https://lov.linkeddata.es/dataset/lov/api/v2/term/search?q=${term}&type=class`;
+    // const lovURL = `https://lov.linkeddata.es/dataset/lov/api/v2/term/search?q=${term}&type=class`;
     const zazukoURL = `https://prefix.zazuko.com/api/v1/search?q=${term}`;
-    const agroPortalURL = `https://agroportal.lirmm.fr/ajax/search/ontologies/content?ontologies=&types=&search=${term}`;
+    // const agroPortalURL = `https://agroportal.lirmm.fr/ajax/search/ontologies/content?ontologies=&types=&search=${term}`;
     const bioPortalURL = `https://data.bioontology.org/search?q=${term}&apikey=4f43ff51-95cd-478c-906a-225203b52b35&suggest=true`;
 
-    const [responseLOV, responseZazuko, responseAgroportal, responseBioportal] =
-      await Promise.all([
-        axios.get(lovURL),
-        axios.get(zazukoURL),
-        axios.get(agroPortalURL),
-        axios.get(bioPortalURL),
-      ]);
+    const [responseZazuko, responseBioportal] = await Promise.all([
+      // axios.get(lovURL),
+      axios.get(zazukoURL),
+      // axios.get(agroPortalURL),
+      axios.get(bioPortalURL),
+    ]);
+
+    // const [responseLOV, responseZazuko, responseAgroportal, responseBioportal] =
+    //   await Promise.all([
+    //     axios.get(lovURL),
+    //     axios.get(zazukoURL),
+    //     axios.get(agroPortalURL),
+    //     axios.get(bioPortalURL),
+    //   ]);
 
     const processedData = {
-      lov: processLOVData(responseLOV.data),
+      // lov: processLOVData(responseLOV.data),
       zazuko: processZazukoData(responseZazuko.data),
-      agroportal: processAgroportalData(responseAgroportal.data),
+      // agroportal: processAgroportalData(responseAgroportal.data),
       bioportal: processBioPortalData(responseBioportal.data),
     };
 
